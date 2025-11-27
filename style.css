@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background-color: #f5f5f5;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 640px;
+    height: 1008px;
+    margin: 0 auto;
+    background-color: white;
+    overflow: hidden;
+}
+
+.pages {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background-size: cover;
+    background-position: center;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    z-index: 10;
+}
+
+.page.active ~ .page {
+    transform: translateX(-100%);
+}
+
+/* 页面背景样式 */
+#page1 {
+    background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a1a2e"/><path d="M20 20 L80 20 L80 80 L20 80 Z" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/><path d="M30 30 L70 30 L70 70 L30 70 Z" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.3"/><path d="M40 40 L60 40 L60 60 L40 60 Z" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.4"/></svg>') repeat;
+    color: white;
+}
+
+#page2 {
+    background: linear-gradient(rgba(22, 33, 62, 0.8), rgba(22, 33, 62, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2316213e"/><circle cx="50" cy="50" r="2" fill="%23ffffff" opacity="0.3"/><circle cx="30" cy="30" r="1" fill="%23ffffff" opacity="0.2"/><circle cx="70" cy="30" r="1" fill="%23ffffff" opacity="0.2"/><circle cx="30" cy="70" r="1" fill="%23ffffff" opacity="0.2"/><circle cx="70" cy="70" r="1" fill="%23ffffff" opacity="0.2"/></svg>') repeat;
+    color: white;
+}
+
+#page3 {
+    background: linear-gradient(rgba(15, 52, 96, 0.8), rgba(15, 52, 96, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230f3460"/><path d="M0 20 L100 20" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/><path d="M0 40 L100 40" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/><path d="M0 60 L100 60" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/><path d="M0 80 L100 80" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/></svg>') repeat;
+    color: white;
+}
+
+#page4 {
+    background: linear-gradient(rgba(233, 69, 96, 0.8), rgba(233, 69, 96, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23e94560"/><path d="M20 0 L20 100" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/><path d="M40 0 L40 100" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/><path d="M60 0 L60 100" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/><path d="M80 0 L80 100" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/></svg>') repeat;
+    color: white;
+}
+
+#page5 {
+    background: linear-gradient(rgba(0, 184, 148, 0.8), rgba(0, 184, 148, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2300b894"/><polygon points="50,10 90,90 10,90" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/></svg>') repeat;
+    color: white;
+}
+
+#page6 {
+    background: linear-gradient(rgba(253, 203, 110, 0.8), rgba(253, 203, 110, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23fdcb6e"/><circle cx="50" cy="50" r="40" fill="none" stroke="%232d3436" stroke-width="0.5" opacity="0.2"/><circle cx="50" cy="50" r="20" fill="none" stroke="%232d3436" stroke-width="0.5" opacity="0.3"/></svg>') repeat;
+    color: #2d3436;
+}
+
+#page7 {
+    background: linear-gradient(rgba(108, 92, 231, 0.8), rgba(108, 92, 231, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%236c5ce7"/><path d="M0 0 L100 100" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/><path d="M100 0 L0 100" stroke="%23ffffff" stroke-width="0.5" opacity="0.2"/></svg>') repeat;
+    color: white;
+}
+
+/* 封面图片样式 */
+.cover-image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 30px;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    animation: rotate 10s linear infinite;
+    opacity: 0.8;
+}
+
+.cover-image::before {
+    content: "🏭";
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 页面图标样式 */
+.page-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-size: 48px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+    font-size: 42px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+p {
+    font-size: 24px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+/* 按钮样式 */
+.next-btn, .prev-btn {
+    padding: 15px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background-color: #e94560;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.prev-btn {
+    background-color: #00b894;
+}
+
+.next-btn:hover, .prev-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.next-btn:active, .prev-btn:active {
+    transform: translateY(0);
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 40px;
+}
+
+/* 案例列表样式 */
+.case-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 30px 0;
+}
+
+.case-item {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 5px solid white;
+    border-radius: 10px;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.case-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.case-item strong {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.case-item p {
+    font-size: 20px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 保护意义列表样式 */
+.benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 30px 0;
+}
+
+.benefit-item {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 5px solid white;
+    border-radius: 10px;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.benefit-item strong {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.benefit-item p {
+    font-size: 20px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 互动选项样式 */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: 40px 0;
+}
+
+.option {
+    padding: 20px;
+    font-size: 28px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.option:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.option.selected {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* 结果显示样式 */
+.result {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    font-size: 24px;
+    color: white;
+    opacity: 0;
+    transition: all 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 行动号召样式 */
+.call-to-action {
+    margin: 40px 0;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    animation: pulse 2s infinite;
+    backdrop-filter: blur(10px);
+}
+
+.call-to-action strong {
+    font-size: 36px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 页码指示器 */
+.pagination {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 20;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: white;
+    transform: scale(1.3);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page.active .content {
+    animation: fadeIn 0.8s ease;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+    .container {
+        width: 100%;
+        height: 100vh;
+    }
+    
+    h1 {
+        font-size: 48px;
+    }
+    
+    h2 {
+        font-size: 36px;
+    }
+    
+    h3 {
+        font-size: 32px;
+    }
+    
+    p {
+        font-size: 20px;
+    }
+    
+    .option {
+        font-size: 24px;
+    }
+}
