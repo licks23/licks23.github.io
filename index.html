@@ -13,11 +13,48 @@
             <!-- 第1页：封面 -->
             <div class="page active" id="page1">
                 <div class="content">
-                    <div class="cover-image"></div>
-                    <h1>工业遗产</h1>
-                    <h2>改造与保护</h2>
-                    <p>探索老工业城市转型发展新路径</p>
+                    <!-- 动态背景视频 -->
+                    <div class="video-background">
+                        <div class="video-placeholder">
+                            <div class="video-icon">🎬</div>
+                            <p>辽宁工业遗产混剪视频</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 标题区域 -->
+                    <div class="title-container">
+                        <h1 class="metal-text">工业遗产</h1>
+                        <h2 class="metal-text">改造与保护</h2>
+                        <p class="subtitle">探索老工业城市转型发展新路径</p>
+                    </div>
+                    
+                    <!-- 内容预览模块 -->
+                    <div class="content-preview">
+                        <h4>内容预览</h4>
+                        <div class="preview-cards">
+                            <div class="preview-card" onclick="goToPage(2)">
+                                <div class="preview-icon">🏙️</div>
+                                <p>辽宁遗产</p>
+                            </div>
+                            <div class="preview-card" onclick="goToPage(3)">
+                                <div class="preview-icon">🏗️</div>
+                                <p>改造案例</p>
+                            </div>
+                            <div class="preview-card" onclick="goToPage(5)">
+                                <div class="preview-icon">🗳️</div>
+                                <p>互动投票</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 开始探索按钮 -->
                     <div class="next-btn">开始探索</div>
+                    
+                    <!-- 沉浸式浏览提示 -->
+                    <div class="browse-tip">
+                        <div class="gesture-icon">⬅️➡️</div>
+                        <p>建议横屏观看，滑动/点击探索更多</p>
+                    </div>
                 </div>
             </div>
             
@@ -27,6 +64,70 @@
                     <div class="page-icon">📜</div>
                     <h3>什么是工业遗产？</h3>
                     <p>工业遗产是指具有历史价值、技术价值、社会意义、建筑或科研价值的工业文化遗存，包括建筑物和机械、车间、磨坊、工厂、矿山以及相关的加工提炼场地、仓库和店铺、生产、传输和使用能源的场所、交通基础设施等。</p>
+                    
+                    <!-- 工业遗产分类图标组 -->
+                    <div class="heritage-categories">
+                        <h4>工业遗产分类</h4>
+                        <div class="category-cards">
+                            <div class="category-card" onclick="showHeritageInfo('building')">
+                                <div class="category-icon">🏢</div>
+                                <h5>建筑物类</h5>
+                                <p>鞍山钢铁厂房</p>
+                            </div>
+                            <div class="category-card" onclick="showHeritageInfo('machine')">
+                                <div class="category-icon">⚙️</div>
+                                <h5>机械设施类</h5>
+                                <p>沈阳机床老设备</p>
+                            </div>
+                            <div class="category-card" onclick="showHeritageInfo('site')">
+                                <div class="category-icon">⛏️</div>
+                                <h5>场地类</h5>
+                                <p>抚顺西露天矿</p>
+                            </div>
+                            <div class="category-card" onclick="showHeritageInfo('transport')">
+                                <div class="category-icon">🚂</div>
+                                <h5>交通设施类</h5>
+                                <p>老工业铁路轨道</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 核心属性标签 -->
+                    <div class="heritage-values">
+                        <h4>核心价值</h4>
+                        <div class="value-tags">
+                            <div class="value-tag" data-value="历史价值">
+                                <span class="tag-label">历史价值</span>
+                                <span class="tag-desc">体现工业发展的历史脉络</span>
+                            </div>
+                            <div class="value-tag" data-value="技术价值">
+                                <span class="tag-label">技术价值</span>
+                                <span class="tag-desc">反映特定时期的技术水平</span>
+                            </div>
+                            <div class="value-tag" data-value="社会意义">
+                                <span class="tag-label">社会意义</span>
+                                <span class="tag-desc">承载着工人的集体记忆</span>
+                            </div>
+                            <div class="value-tag" data-value="科研价值">
+                                <span class="tag-label">科研价值</span>
+                                <span class="tag-desc">为工业史研究提供实物资料</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 小知识弹窗 -->
+                    <div class="knowledge-popup" id="knowledgePopup">
+                        <div class="popup-content">
+                            <div class="popup-header">
+                                <h5 id="popupTitle">小知识</h5>
+                                <div class="close-btn" onclick="closeHeritageInfo()">×</div>
+                            </div>
+                            <div class="popup-body" id="popupBody">
+                                <p>点击分类卡片查看详细信息</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="nav-buttons">
                         <div class="prev-btn">上一页</div>
                         <div class="next-btn">下一页</div>
@@ -40,24 +141,102 @@
                     <div class="page-icon">🏙️</div>
                     <h3>辽宁工业遗产</h3>
                     <p>辽宁作为中国重要的老工业基地，拥有丰富的工业遗产资源：</p>
-                    <div class="case-list">
-                        <div class="case-item">
-                            <strong>鞍山钢铁公司</strong>
-                            <p>新中国第一个恢复建设的大型钢铁联合企业，被誉为"共和国钢铁工业的长子"</p>
-                        </div>
-                        <div class="case-item">
-                            <strong>沈阳机床厂</strong>
-                            <p>中国机床工业的摇篮，创造了中国机床工业的多项第一</p>
-                        </div>
-                        <div class="case-item">
-                            <strong>大连造船厂</strong>
-                            <p>中国最大的造船企业之一，建造了多艘万吨级巨轮</p>
-                        </div>
-                        <div class="case-item">
-                            <strong>抚顺西露天矿</strong>
-                            <p>亚洲最大的露天煤矿，具有重要的历史和科学价值</p>
+                    
+                    <!-- 辽宁工业遗产地图 -->
+                    <div class="liaoning-map">
+                        <h4>辽宁工业遗产分布</h4>
+                        <div class="map-container">
+                            <div class="map-placeholder">
+                                <div class="map-dots">
+                                    <div class="map-dot" data-city="鞍山" onclick="showHeritageStory('anshan')">
+                                        <div class="dot-label">鞍山</div>
+                                    </div>
+                                    <div class="map-dot" data-city="沈阳" onclick="showHeritageStory('shenyang')">
+                                        <div class="dot-label">沈阳</div>
+                                    </div>
+                                    <div class="map-dot" data-city="大连" onclick="showHeritageStory('dalian')">
+                                        <div class="dot-label">大连</div>
+                                    </div>
+                                    <div class="map-dot" data-city="抚顺" onclick="showHeritageStory('fushun')">
+                                        <div class="dot-label">抚顺</div>
+                                    </div>
+                                </div>
+                                <p>点击地图上的红点查看对应城市的工业遗产</p>
+                            </div>
                         </div>
                     </div>
+                    
+                    <!-- 工业遗产列表 -->
+                    <div class="heritage-list">
+                        <div class="heritage-item">
+                            <div class="heritage-header">
+                                <div class="heritage-icon">🏭</div>
+                                <h5>鞍山钢铁公司</h5>
+                            </div>
+                            <p>新中国第一个恢复建设的大型钢铁联合企业，被誉为"共和国钢铁工业的长子"</p>
+                            <div class="story-card" onclick="toggleStory(this)">
+                                <div class="story-header">
+                                    <span>历史故事</span>
+                                    <span class="story-toggle">+</span>
+                                </div>
+                                <div class="story-content">
+                                    <p>1949年7月9日，鞍钢高炉首次出铁，结束了中国不能生产大型钢材的历史。这一事件标志着新中国钢铁工业的起步，为国家的工业化建设奠定了基础。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="heritage-item">
+                            <div class="heritage-header">
+                                <div class="heritage-icon">⚙️</div>
+                                <h5>沈阳机床厂</h5>
+                            </div>
+                            <p>中国机床工业的摇篮，创造了中国机床工业的多项第一</p>
+                            <div class="story-card" onclick="toggleStory(this)">
+                                <div class="story-header">
+                                    <span>历史故事</span>
+                                    <span class="story-toggle">+</span>
+                                </div>
+                                <div class="story-content">
+                                    <p>1955年，沈阳机床厂自主研发的"C620-1普通车床"，成为中国机床工业的"初代网红产品"，出口到10多个国家，展现了中国机床工业的技术实力。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="heritage-item">
+                            <div class="heritage-header">
+                                <div class="heritage-icon">🚢</div>
+                                <h5>大连造船厂</h5>
+                            </div>
+                            <p>中国最大的造船企业之一，建造了多艘万吨级巨轮</p>
+                            <div class="story-card" onclick="toggleStory(this)">
+                                <div class="story-header">
+                                    <span>历史故事</span>
+                                    <span class="story-toggle">+</span>
+                                </div>
+                                <div class="story-content">
+                                    <p>大连造船厂有着百年历史，曾建造了中国第一艘万吨级远洋货轮"跃进"号，以及多艘军舰和民用船舶，为中国的航运事业和国防建设做出了重要贡献。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="heritage-item">
+                            <div class="heritage-header">
+                                <div class="heritage-icon">⛏️</div>
+                                <h5>抚顺西露天矿</h5>
+                            </div>
+                            <p>亚洲最大的露天煤矿，具有重要的历史和科学价值</p>
+                            <div class="story-card" onclick="toggleStory(this)">
+                                <div class="story-header">
+                                    <span>历史故事</span>
+                                    <span class="story-toggle">+</span>
+                                </div>
+                                <div class="story-content">
+                                    <p>抚顺西露天矿开采历史超百年，矿坑最大深度400米，曾是亚洲规模最大的露天煤矿。如今，它已转型为"工业遗产旅游景区"，向人们展示着煤炭工业的发展历程。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="nav-buttons">
                         <div class="prev-btn">上一页</div>
                         <div class="next-btn">下一页</div>
@@ -71,24 +250,114 @@
                     <div class="page-icon">🏗️</div>
                     <h3>成功改造案例</h3>
                     <p>国内外许多工业遗产通过创意改造，焕发出新的生机：</p>
-                    <div class="case-list">
+                    
+                    <!-- 改造案例列表 -->
+                    <div class="transformation-cases">
+                        <!-- 北京798艺术区 -->
                         <div class="case-item">
-                            <strong>北京798艺术区</strong>
+                            <h5>北京798艺术区</h5>
+                            <!-- 改造前后对比图 -->
+                            <div class="before-after-container">
+                                <div class="before-after">
+                                    <div class="before-section">
+                                        <div class="before-icon">⏮️</div>
+                                        <p>改造前</p>
+                                        <div class="image-placeholder">1990年代废弃车间</div>
+                                    </div>
+                                    <div class="after-section">
+                                        <div class="after-icon">⏭️</div>
+                                        <p>改造后</p>
+                                        <div class="image-placeholder">现当代艺术展览现场</div>
+                                    </div>
+                                </div>
+                                <div class="transformation-strategy">
+                                    <span class="strategy-tag">保留厂房结构</span>
+                                    <span class="strategy-tag">注入艺术功能</span>
+                                    <span class="strategy-tag">吸引创意人才</span>
+                                </div>
+                            </div>
                             <p>原国营798厂等电子工业的老厂区，改造为集艺术展示、创意设计、文化交流于一体的艺术园区</p>
                         </div>
+                        
+                        <!-- 沈阳红梅文创园 -->
                         <div class="case-item">
-                            <strong>上海八号桥创意园</strong>
-                            <p>原上海汽车制动器公司旧厂房，改造为时尚创意设计园区，吸引众多创意企业入驻</p>
-                        </div>
-                        <div class="case-item">
-                            <strong>沈阳红梅文创园</strong>
+                            <h5>沈阳红梅文创园</h5>
+                            <!-- 改造前后对比图 -->
+                            <div class="before-after-container">
+                                <div class="before-after">
+                                    <div class="before-section">
+                                        <div class="before-icon">⏮️</div>
+                                        <p>改造前</p>
+                                        <div class="image-placeholder">2010年停产的味精厂房</div>
+                                    </div>
+                                    <div class="after-section">
+                                        <div class="after-icon">⏭️</div>
+                                        <p>改造后</p>
+                                        <div class="image-placeholder">现文创园里的"味精主题展览馆"与网红咖啡馆</div>
+                                    </div>
+                                </div>
+                                <div class="transformation-strategy">
+                                    <span class="strategy-tag">保留厂房结构</span>
+                                    <span class="strategy-tag">注入文化消费功能</span>
+                                    <span class="strategy-tag">打造网红打卡地</span>
+                                </div>
+                            </div>
                             <p>原沈阳红梅味精厂，改造为集文化创意、科技创新、商业休闲于一体的文创园区</p>
                         </div>
+                        
+                        <!-- 抚顺煤矿博物馆 -->
                         <div class="case-item">
-                            <strong>大连冰山慧谷</strong>
-                            <p>原大连冷冻机厂，改造为以"工业遗产+数字科技+文化创意"为特色的产业园区</p>
+                            <h5>抚顺煤矿博物馆</h5>
+                            <!-- 改造前后对比图 -->
+                            <div class="before-after-container">
+                                <div class="before-after">
+                                    <div class="before-section">
+                                        <div class="before-icon">⏮️</div>
+                                        <p>改造前</p>
+                                        <div class="image-placeholder">废弃的煤矿矿井</div>
+                                    </div>
+                                    <div class="after-section">
+                                        <div class="after-icon">⏭️</div>
+                                        <p>改造后</p>
+                                        <div class="image-placeholder">"地下矿井体验+煤炭历史展览"的沉浸式博物馆</div>
+                                    </div>
+                                </div>
+                                <div class="transformation-strategy">
+                                    <span class="strategy-tag">利用矿井空间</span>
+                                    <span class="strategy-tag">开发体验项目</span>
+                                    <span class="strategy-tag">开展工业旅游</span>
+                                </div>
+                            </div>
+                            <p>依托抚顺西露天矿遗址，打造"地下矿井体验+煤炭历史展览"的沉浸式博物馆，年接待游客超50万人次</p>
+                        </div>
+                        
+                        <!-- 鞍山钢铁工业旅游区 -->
+                        <div class="case-item">
+                            <h5>鞍山钢铁工业旅游区</h5>
+                            <!-- 改造前后对比图 -->
+                            <div class="before-after-container">
+                                <div class="before-after">
+                                    <div class="before-section">
+                                        <div class="before-icon">⏮️</div>
+                                        <p>改造前</p>
+                                        <div class="image-placeholder">闲置的2号高炉、老轧钢车间</div>
+                                    </div>
+                                    <div class="after-section">
+                                        <div class="after-icon">⏭️</div>
+                                        <p>改造后</p>
+                                        <div class="image-placeholder">钢铁研学游基地</div>
+                                    </div>
+                                </div>
+                                <div class="transformation-strategy">
+                                    <span class="strategy-tag">保留工业设施</span>
+                                    <span class="strategy-tag">开发研学项目</span>
+                                    <span class="strategy-tag">开展工业教育</span>
+                                </div>
+                            </div>
+                            <p>保留2号高炉、老轧钢车间，开发"钢铁研学游"，成为中小学生工业教育基地</p>
                         </div>
                     </div>
+                    
                     <div class="nav-buttons">
                         <div class="prev-btn">上一页</div>
                         <div class="next-btn">下一页</div>
@@ -96,29 +365,87 @@
                 </div>
             </div>
             
-            <!-- 第5页：保护意义 -->
+            <!-- 第5页：保护的意义 -->
             <div class="page" id="page5">
                 <div class="content">
                     <div class="page-icon">💎</div>
                     <h3>保护的意义</h3>
-                    <div class="benefits-list">
-                        <div class="benefit-item">
-                            <strong>历史价值</strong>
-                            <p>工业遗产是城市发展的见证，承载着工业文明的记忆，保护它们就是保护城市的历史文脉。</p>
-                        </div>
-                        <div class="benefit-item">
-                            <strong>经济价值</strong>
-                            <p>通过创意改造，可以发展文化旅游、创意产业等，创造就业机会，促进地方经济发展。</p>
-                        </div>
-                        <div class="benefit-item">
-                            <strong>社会价值</strong>
+                    
+                    <!-- 价值维度列表（按用户视角重构） -->
+                    <div class="value-dimensions">
+                        <!-- 社会价值 -->
+                        <div class="dimension-item">
+                            <div class="dimension-header">
+                                <div class="dimension-icon">👥</div>
+                                <h5>社会价值</h5>
+                            </div>
                             <p>工业遗产改造可以提升城市品质，增强居民归属感，促进社区发展和社会融合。</p>
+                            <div class="local-case">
+                                <strong>辽宁案例：</strong>
+                                <p>沈阳红梅文创园改造后，周边社区就业率提升15%，成为居民周末休闲的"家门口公园"。</p>
+                            </div>
                         </div>
-                        <div class="benefit-item">
-                            <strong>生态价值</strong>
+                        
+                        <!-- 经济价值 -->
+                        <div class="dimension-item">
+                            <div class="dimension-header">
+                                <div class="dimension-icon">💰</div>
+                                <h5>经济价值</h5>
+                            </div>
+                            <p>通过创意改造，可以发展文化旅游、创意产业等，创造就业机会，促进地方经济发展。</p>
+                            <div class="local-case">
+                                <strong>辽宁案例：</strong>
+                                <p>鞍山钢铁工业旅游区年接待游客超30万人次，带动周边餐饮、住宿消费超5000万元。</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 生态价值 -->
+                        <div class="dimension-item">
+                            <div class="dimension-header">
+                                <div class="dimension-icon">🌱</div>
+                                <h5>生态价值</h5>
+                            </div>
                             <p>对工业遗址进行生态修复和绿色改造，可以改善城市生态环境，实现可持续发展。</p>
+                            <div class="local-case">
+                                <strong>辽宁案例：</strong>
+                                <p>抚顺西露天矿通过覆土绿化、水体修复，已种植乔木1.2万棵，成为"城市绿肺"，PM2.5浓度较改造前下降20%。</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 历史价值 -->
+                        <div class="dimension-item">
+                            <div class="dimension-header">
+                                <div class="dimension-icon">📜</div>
+                                <h5>历史价值</h5>
+                            </div>
+                            <p>工业遗产是城市发展的见证，承载着工业文明的记忆，保护它们就是保护城市的历史文脉。</p>
+                            <div class="local-case">
+                                <strong>辽宁案例：</strong>
+                                <p>沈阳机床厂老车间改造为工业博物馆，收藏了从1953年至今的各类机床设备，成为青少年工业历史教育基地。</p>
+                            </div>
                         </div>
                     </div>
+                    
+                    <!-- 价值转盘互动组件 -->
+                    <div class="value-wheel-container">
+                        <h4>价值转盘</h4>
+                        <div class="value-wheel" onclick="spinWheel()">
+                            <div class="wheel-center">
+                                <div class="wheel-arrow">➤</div>
+                            </div>
+                            <div class="wheel-segments">
+                                <div class="segment" data-value="社会价值">社会价值</div>
+                                <div class="segment" data-value="经济价值">经济价值</div>
+                                <div class="segment" data-value="生态价值">生态价值</div>
+                                <div class="segment" data-value="历史价值">历史价值</div>
+                            </div>
+                        </div>
+                        <p class="wheel-instruction">点击转盘，探索工业遗产的多元价值</p>
+                        <div class="wheel-result" id="wheelResult">
+                            <p>转动转盘，查看对应价值的辽宁案例</p>
+                        </div>
+                    </div>
+                    
                     <div class="nav-buttons">
                         <div class="prev-btn">上一页</div>
                         <div class="next-btn">下一页</div>
@@ -132,13 +459,119 @@
                     <div class="page-icon">🗳️</div>
                     <h3>互动环节</h3>
                     <p>你认为工业遗产应该如何改造？</p>
-                    <div class="options">
-                        <div class="option" data-value="creative">文化创意园区</div>
-                        <div class="option" data-value="museum">工业博物馆</div>
-                        <div class="option" data-value="commercial">商业综合体</div>
-                        <div class="option" data-value="ecological">生态公园</div>
+                    
+                    <!-- 投票选项 -->
+                    <div class="voting-options">
+                        <div class="option" data-value="creative">
+                            <div class="option-icon">🎨</div>
+                            <span>文化创意园区</span>
+                        </div>
+                        <div class="option" data-value="museum">
+                            <div class="option-icon">🏛️</div>
+                            <span>工业博物馆</span>
+                        </div>
+                        <div class="option" data-value="commercial">
+                            <div class="option-icon">🏬</div>
+                            <span>商业综合体</span>
+                        </div>
+                        <div class="option" data-value="ecological">
+                            <div class="option-icon">🌳</div>
+                            <span>生态公园</span>
+                        </div>
                     </div>
-                    <div class="result" id="result"></div>
+                    
+                    <!-- 投票理由输入框 -->
+                    <div class="reason-input-container">
+                        <h4>投票理由</h4>
+                        <textarea id="reasonInput" placeholder="请输入你支持该改造方式的原因..."></textarea>
+                        <div class="upload-section">
+                            <label for="imageUpload">上传设想图（可选）：</label>
+                            <input type="file" id="imageUpload" accept="image/*">
+                        </div>
+                        <button class="submit-vote-btn" onclick="submitVote()">提交投票</button>
+                    </div>
+                    
+                    <!-- 实时结果 -->
+                    <div class="vote-results">
+                        <h4>投票结果</h4>
+                        <div class="results-chart">
+                            <div class="chart-placeholder">
+                                <p>投票结果可视化图表</p>
+                                <div class="chart-legend">
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background-color: #e94560;"></span>
+                                        <span>文化创意园区：35%</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background-color: #3498db;"></span>
+                                        <span>工业博物馆：25%</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background-color: #2ecc71;"></span>
+                                        <span>商业综合体：20%</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color" style="background-color: #9b59b6;"></span>
+                                        <span>生态公园：20%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="region-distribution">
+                            <h5>地域分布</h5>
+                            <div class="distribution-placeholder">
+                                <p>辽宁各城市用户投票偏好热力图</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 传播功能 -->
+                    <div class="share-section">
+                        <h4>分享你的投票</h4>
+                        <div class="share-buttons">
+                            <button class="share-btn wechat">微信分享</button>
+                            <button class="share-btn weibo">微博分享</button>
+                            <button class="share-btn generate" onclick="generatePoster()">生成海报</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 互动排行榜 -->
+                    <div class="ranking-section">
+                        <h4>热门投票理由</h4>
+                        <div class="ranking-list">
+                            <div class="ranking-item">
+                                <div class="ranking-number">1</div>
+                                <div class="ranking-content">
+                                    <p>"希望抚顺煤矿改造成工业研学基地，让更多人知道'中国煤都'的过去"</p>
+                                    <div class="ranking-meta">
+                                        <span class="user-name">@东北小工匠</span>
+                                        <span class="like-count">❤️ 128</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="ranking-number">2</div>
+                                <div class="ranking-content">
+                                    <p>"文化创意园区能吸引年轻人，让老厂房焕发新活力"</p>
+                                    <div class="ranking-meta">
+                                        <span class="user-name">@创意辽宁</span>
+                                        <span class="like-count">❤️ 96</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ranking-item">
+                                <div class="ranking-number">3</div>
+                                <div class="ranking-content">
+                                    <p>"工业博物馆可以保存历史，让后代了解辽宁的工业辉煌"</p>
+                                    <div class="ranking-meta">
+                                        <span class="user-name">@历史爱好者</span>
+                                        <span class="like-count">❤️ 85</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="nav-buttons">
                         <div class="prev-btn">上一页</div>
                         <div class="next-btn">下一页</div>
@@ -149,14 +582,70 @@
             <!-- 第7页：结语 -->
             <div class="page" id="page7">
                 <div class="content">
+                    <!-- 背景视频 -->
+                    <div class="video-background">
+                        <div class="video-placeholder">
+                            <div class="video-icon">🎬</div>
+                            <p>辽宁工业遗产"新生"混剪</p>
+                        </div>
+                        <div class="audio-control">
+                            <span>背景音乐</span>
+                            <button class="audio-btn" onclick="toggleAudio()">🔊</button>
+                        </div>
+                    </div>
+                    
                     <div class="page-icon">🌟</div>
                     <h3>结语</h3>
                     <p>工业遗产是城市的记忆，是历史的见证，更是未来发展的资源。通过创新设计和合理利用，工业遗产可以焕发出新的生机与活力。</p>
                     <p>让我们共同努力，保护和利用好这些宝贵的工业遗产资源，探索老工业城市转型发展的新路径，为辽宁老工业基地新一轮全面振兴贡献力量！</p>
+                    
+                    <!-- 用户UGC内容 -->
+                    <div class="ugc-section">
+                        <h4>网友心声</h4>
+                        <div class="ugc-item">
+                            <div class="ugc-quote">"</div>
+                            <p>保护工业遗产不是守旧，是让老厂房能装下新梦想</p>
+                            <div class="ugc-author">— 网友@辽小虎</div>
+                        </div>
+                        <div class="ugc-item">
+                            <div class="ugc-quote">"</div>
+                            <p>希望抚顺煤矿改造成工业研学基地，让更多人知道'中国煤都'的过去</p>
+                            <div class="ugc-author">— 网友@东北小工匠</div>
+                        </div>
+                        <div class="ugc-item">
+                            <div class="ugc-quote">"</div>
+                            <p>文化创意园区能吸引年轻人，让老厂房焕发新活力</p>
+                            <div class="ugc-author">— 网友@创意辽宁</div>
+                        </div>
+                    </div>
+                    
                     <div class="call-to-action">
                         <strong>保护工业遗产，共创美好未来！</strong>
                     </div>
-                    <div class="prev-btn">返回首页</div>
+                    
+                    <!-- 三大行动入口 -->
+                    <div class="action-entries">
+                        <h4>行动起来</h4>
+                        <div class="action-cards">
+                            <div class="action-card" onclick="openMap()">
+                                <div class="action-icon">🗺️</div>
+                                <h5>查看打卡地图</h5>
+                                <p>探索辽宁工业遗产打卡点</p>
+                            </div>
+                            <div class="action-card" onclick="submitIdea()">
+                                <div class="action-icon">💡</div>
+                                <h5>提交改造建议</h5>
+                                <p>分享你的工业遗产改造设想</p>
+                            </div>
+                            <div class="action-card" onclick="shareH5()">
+                                <div class="action-icon">🎁</div>
+                                <h5>分享得纪念品</h5>
+                                <p>分享H5参与抽奖</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prev-btn" onclick="goToPage(0)">返回首页</div>
                 </div>
             </div>
         </div>
